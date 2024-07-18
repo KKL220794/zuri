@@ -110,7 +110,7 @@ const Users = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Cell
+            {/* <Cell
                 title='New group'
                 icon='people'
                 tintColor={colors.teal}
@@ -123,7 +123,7 @@ const Users = () => {
                 tintColor={colors.teal}
                 onPress={handleNewUser}
                 style={{ marginBottom: 10 }}
-            />
+            /> */}
 
             {users.length === 0 ? (
                 <View style={styles.blankContainer}>
@@ -133,11 +133,11 @@ const Users = () => {
                 </View>
             ) : (
                 <ScrollView>
-                    <View>
+                    {/* <View>
                         <Text style={styles.textContainer}>
                             Registered users
                         </Text>
-                    </View>
+                    </View> */}
                     {users.map(user => (
                         <React.Fragment key={user.id}>
                             <ContactRow
@@ -167,6 +167,8 @@ const styles = StyleSheet.create({
         marginLeft: 16,
         fontSize: 16,
         fontWeight: "300",
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 });
 

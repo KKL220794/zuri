@@ -34,7 +34,7 @@ const Settings = ({ navigation }) => {
                 style={{ marginTop: 20 }}
             />
 
-            <Cell
+            {/* <Cell
                 title='Help'
                 subtitle='Contact us, app info'
                 icon='help-circle-outline'
@@ -42,9 +42,9 @@ const Settings = ({ navigation }) => {
                 onPress={() => {
                     navigation.navigate('Help');
                 }}
-            />
+            /> */}
 
-            <Cell
+            {/* <Cell
                 title='Invite a friend'
                 icon='people-outline'
                 iconColor="black"
@@ -52,13 +52,13 @@ const Settings = ({ navigation }) => {
                     alert('Share touched')
                 }}
                 showForwardIcon={false}
-            />
+            /> */}
 
-            <TouchableOpacity style={styles.githubLink} onPress={() => openGithub('https://github.com/Ctere1/react-native-chat')}>
+            <TouchableOpacity style={styles.githubLink} >
                 <View >
                     <Text style={{ fontSize: 12, fontWeight: '400' }}>
                         <Ionicons name="logo-github" size={12} style={{ color: colors.teal }} />
-                        {' '}App's Github
+                        {' '}Copyright to DB Developers
                     </Text>
                 </View>
             </TouchableOpacity>
