@@ -144,8 +144,8 @@ function Chat({ route }) {
         <>
             <GiftedChat
                 messages={messages}
-                showAvatarForEveryMessage={false}
-                showUserAvatar={false}
+                showAvatarForEveryMessage={true}
+                showUserAvatar={true}
                 onSend={messages => onSend(messages)}
                 imageStyle={{ height: 212, width: 212 }}
                 messagesContainerStyle={{ backgroundColor: '#fff' }}

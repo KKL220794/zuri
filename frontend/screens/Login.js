@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, TextInput, Image, SafeAreaView, Touchab
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { colors } from "../config/constants";
-const backImage = require("../assets/background.png");
+const backImage = require("../assets/dementiauk.png");
 
 export default function Login({ navigation }) {
 
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
         color: 'black',
         alignSelf: "center",
         paddingBottom: 24,
+        marginTop:10
     },
     input: {
         backgroundColor: "#F6F7FB",
@@ -79,24 +80,28 @@ const styles = StyleSheet.create({
         padding: 12,
     },
     backImage: {
-        width: "100%",
-        height: 340,
+        width: "80%",
+        // height: 340,
         position: "absolute",
-        top: 0,
+        top: 10,
+        left:10,
         resizeMode: 'cover',
+        marginBottom: 20
     },
     whiteSheet: {
         width: '100%',
-        height: '75%',
+        height: '70%',
         position: "absolute",
         bottom: 0,
         backgroundColor: '#fff',
         borderTopLeftRadius: 60,
+        marginTop: 10
     },
     form: {
         flex: 1,
         justifyContent: 'center',
         marginHorizontal: 30,
+        marginTop:20
     },
     button: {
         backgroundColor: colors.primary,

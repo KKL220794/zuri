@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, database } from '../config/firebase';
 import { colors } from '../config/constants';
 import { doc, setDoc } from 'firebase/firestore';
-const backImage = require("../assets/background.png");
+const backImage = require("../assets/dementiauk.png");
 
 export default function SignUp({ navigation }) {
 
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
         color: 'black',
         alignSelf: "center",
         paddingTop: 48,
+        marginTop: 10
     },
     input: {
         backgroundColor: "#F6F7FB",
@@ -101,15 +102,17 @@ const styles = StyleSheet.create({
         padding: 12,
     },
     backImage: {
-        width: "100%",
-        height: 340,
+        width: "80%",
+        // height: 340,
         position: "absolute",
-        top: 0,
+        top: 10,
+        left: 10,
         resizeMode: 'cover',
+        marginBottom: 20
     },
     whiteSheet: {
         width: '100%',
-        height: '75%',
+        height: '70%',
         position: "absolute",
         bottom: 0,
         backgroundColor: '#fff',
@@ -119,6 +122,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         marginHorizontal: 30,
+        marginTop:20
     },
     button: {
         backgroundColor: colors.primary,
