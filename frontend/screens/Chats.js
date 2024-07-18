@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, ScrollView, Pressable, Alert, ActivityIndicator } from "react-native";
+import { SafeAreaView, StyleSheet, View, TouchableOpacity, Text, ScrollView, Pressable, Alert, ActivityIndicator, Button } from "react-native";
 import ContactRow from '../components/ContactRow';
 import Separator from "../components/Separator";
 import { useNavigation } from '@react-navigation/native';
@@ -7,12 +7,14 @@ import { auth, database } from '../config/firebase';
 import { collection, doc, where, query, onSnapshot, orderBy, setDoc, deleteDoc } from 'firebase/firestore';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from "../config/constants";
+import GenerateNotification from '../components/notification';
 
 const Chats = () => {
     const navigation = useNavigation();
     const [chats, setChats] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedItems, setSelectedItems] = useState([]);
+    const [ showNoti, setShowNoti ] = useState(false);
 
     useEffect(() => {
         const collectionRef = collection(database, 'chats');
@@ -31,6 +33,10 @@ const Chats = () => {
     useEffect(() => {
         updateNavigationOptions();
     }, [selectedItems]);
+
+    useEffect(() => {
+        setShowNoti(false);
+    }, [showNoti]);
 
     const updateNavigationOptions = () => {
         if (selectedItems.length > 0) {
@@ -164,6 +170,10 @@ const Chats = () => {
         return new Date(chat.data().lastUpdated).toLocaleDateString(undefined, options);
     };
 
+    const generateNotification = () => {
+        setShowNoti(true);
+    }
+
     return (
         <Pressable style={styles.container} onPress={deSelectItems}>
             {loading ? (
@@ -203,6 +213,11 @@ const Chats = () => {
                     <Ionicons name="chatbox-ellipses" size={24} color={'white'} />
                 </View>
             </TouchableOpacity>
+            <Button
+                title="notification"
+                onPress={() => generateNotification()}
+            />
+            { showNoti && <GenerateNotification/>}
         </Pressable>
     );
 };
