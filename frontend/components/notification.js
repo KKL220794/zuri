@@ -18,8 +18,8 @@ const generateNotification = async () => {
   Notifications.scheduleNotificationAsync({
     //set the content of the notification
     content: {
-      title: "Demo title",
-      body: "Demo body",
+      title: "Red Flag",
+      body: "Could please assist patient in person",
     },
     trigger: null,
   });

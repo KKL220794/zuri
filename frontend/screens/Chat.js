@@ -10,11 +10,13 @@ import EmojiModal from 'react-native-emoji-modal';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import uuid from 'react-native-uuid';
+import GenerateNotification from '../components/notification';
 
 function Chat({ route }) {
     const navigation = useNavigation();
     const [messages, setMessages] = useState([]);
     const [modal, setModal] = useState(false);
+    const [ showNoti, setShowNoti ] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(doc(database, 'chats', route.params.id), (doc) => {
@@ -28,7 +30,16 @@ function Chat({ route }) {
         return () => unsubscribe();
     }, [route.params.id]);
 
+    useEffect(() => {
+        setShowNoti(false);
+    }, [showNoti]);
+
     const onSend = useCallback((m = []) => {
+        // console.log('test.... messages ', m[0].text);
+        if(/not feeling well|headache/.test(m[0].text.toLowerCase())){
+            console.log('test.... show notification');
+            generateNotification();
+        }
         const messagesWillSend = [{ ...m[0], sent: true, received: false }];
         setDoc(doc(database, 'chats', route.params.id), {
             messages: GiftedChat.append(messages, messagesWillSend),
@@ -140,6 +151,11 @@ function Chat({ route }) {
         </View>
     ), []);
 
+    // console.log('test.... messages ', messages[0].text);
+    const generateNotification = () => {
+        setShowNoti(true);
+    }
+
     return (
         <>
             <GiftedChat
@@ -190,6 +206,7 @@ function Chat({ route }) {
                     }}
                 />
             }
+            { showNoti && <GenerateNotification/>}
         </>
     );
 }

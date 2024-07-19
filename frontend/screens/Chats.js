@@ -213,11 +213,11 @@ const Chats = () => {
                     <Ionicons name="chatbox-ellipses" size={24} color={'white'} />
                 </View>
             </TouchableOpacity>
-            <Button
+            {/* <Button
                 title="notification"
                 onPress={() => generateNotification()}
             />
-            { showNoti && <GenerateNotification/>}
+            { showNoti && <GenerateNotification/>} */}
         </Pressable>
     );
 };
